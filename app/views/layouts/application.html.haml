@@ -8,4 +8,21 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    %header.navbar.navbar-expand-sm.navbar-light.bg-light
+      .container
+        = link_to "awsome events" , root_path, class:"navbar-brand"
+        %ul.navbar
+          %li.nav-item
+            - if login?
+              = link_to "ログアウト", :logout, class:"btn btn-primary", method: :delete, data:{confirm:"削除しますか？"} 
+            - else
+              = link_to "Githubでログイン", "auth/github", class: "nav-link", method: :post
+              
+            
+  %div
+    - if flash.notice
+      .alert-success
+        = flash.notice 
     = yield
+    %footer
+      = debug(params)
