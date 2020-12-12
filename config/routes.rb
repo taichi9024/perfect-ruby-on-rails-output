@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :resign , only:[:new, :create]
   resources :events do
     resources :tickets
   end

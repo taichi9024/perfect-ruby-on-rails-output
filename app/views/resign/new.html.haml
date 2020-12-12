@@ -1,0 +1,5 @@
+%h1 退会ページ
+%p 退会フォームです
+
+= form_with(model:@resign, url: :resign_index) do |f|
+  =f.submit "退会", class:"btn btn-primary"
