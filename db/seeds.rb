@@ -5,3 +5,4 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Event.create(owner_id:1, name:"Rubyをいじろう", place:"祐天寺", start_date:Date.yesterday, end_at:Date.tomorrow, content:"初心者から駆け出しまで誰でも大歓迎")

@@ -11,14 +11,17 @@
     %header.navbar.navbar-expand-sm.navbar-light.bg-light
       .container
         = link_to "awsome events" , root_path, class:"navbar-brand"
+        
         %ul.navbar
-          %li.nav-item
-            - if login?
-              = link_to "ログアウト", :logout, class:"btn btn-primary", method: :delete, data:{confirm:"削除しますか？"} 
-            - else
-              = link_to "Githubでログイン", "auth/github", class: "nav-link", method: :post
-              
-            
+        - if login?
+          = link_to "ログアウト", :logout, class:"btn btn-primary", method: :delete, data:{confirm:"削除しますか？"} 
+        - else
+          = link_to "Githubでログイン", "auth/github", class: "nav-link", method: :post
+    %ul.mt-5        
+      %li.nav-item
+      - if login?
+        = link_to "イベントの作成", :new_event,class:"btn btn-primary"
+                
   %div
     - if flash.notice
       .alert-success

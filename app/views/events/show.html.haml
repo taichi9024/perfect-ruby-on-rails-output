@@ -1,0 +1,35 @@
+%5 イベント内容
+.card
+  %h4.card-header イベントID
+  .card-body
+    %p.ml-5= @event.id
+.card
+  %h4.card-header イベント名
+  .card-body
+    %p.ml-5= @event.name
+.card
+  %h4.card-header 開催場所
+  .card-body
+    %p.ml-5= @event.place
+.card
+  %h4.card-header 開始日時
+  .card-body
+    %p.ml-5= @event.start_date
+.card
+  %h4.card-header 完了日時
+  .card-body 
+    %p.ml-5= @event.end_at
+.card
+  %h4.card-header 詳細
+  .card-body  
+    %p.ml-5= @event.content
+.card
+  %h4.card-header 主催者
+  .card-body  
+    = link_to("https://github.com/#{@event.owner.name}", class:"card-link") do
+      = image_tag @event.owner.image_url, width:50, height:50
+      = "@#{@event.owner.name}"
+
+- if @event.created_by(current_user)
+  =link_to "編集する", edit_event_path(@event), class:"btn btn-primary"
+  =link_to "削除する", event_path(@event),method: :delete, data:{confirm:"削除しますか？"} ,class:"btn btn-primary"

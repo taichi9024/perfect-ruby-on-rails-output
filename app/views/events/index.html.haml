@@ -1,0 +1,7 @@
+%h1 イベント一覧
+
+%ul
+  -@events.each do |event|
+    = link_to(event) do
+      %h5= event.name
+      %p= "#{ftime(event.start_date)} - #{ftime(event.end_at)}"
