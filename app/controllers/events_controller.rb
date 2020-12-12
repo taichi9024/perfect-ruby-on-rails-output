@@ -31,12 +31,14 @@ class EventsController < ApplicationController
 
     def show
         @event = Event.find_by(id: params[:id])
+        @tickets = @event.tickets.includes(:user)
+        @ticket = current_user && current_user.tickets.find_by(event:@event)
     end
 
     def destroy
-        @event = Event.find_by(id: params[:id])
-        @event.destroy!
-        redirect_to :events
+        ticket = current_user.tickets.find_by(event_id: params[:event_id])
+        ticket.destroy!
+        redirect_to :events, notice: "参加をキャンセルしました"
     end
 
     private
